@@ -1,0 +1,5 @@
+/* The application ships its own scoped design system inside SerializationApp.jsx
+   (every rule is namespaced under .sn), so this file only has to hand it a
+   full-height canvas to fill. */
+html, body, #root { height: 100%; margin: 0; }
+body { background: #F4F6FB; }
