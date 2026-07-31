@@ -2562,10 +2562,12 @@ const TITLES = {
   packaging:"Packaging", cartons:"Master Cartons", scanner:"Barcode Scanner", labels:"Label Printing",
   reports:"Reports", audit:"Audit Logs", settings:"Settings", users:"Users",
 };
+const AUTH_STORAGE_KEY = "supernova-psms-auth";
+const ROLE_STORAGE_KEY = "supernova-psms-role";
 
 export default function App() {
-  const [signedIn, setSignedIn] = useState(false);
-  const [role, setRole] = useState("Admin");
+  const [signedIn, setSignedIn] = useState(() => localStorage.getItem(AUTH_STORAGE_KEY) === "true");
+  const [role, setRole] = useState(() => localStorage.getItem(ROLE_STORAGE_KEY) || "Admin");
   const [route, setRoute] = useState("dashboard");
   const [collapsed, setCollapsed] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
@@ -2629,7 +2631,13 @@ export default function App() {
     if (!allowed.includes(route)) setRoute("dashboard");
   }, [role]);
 
-  if (!signedIn) return <Login onIn={(r) => { setRole(r); setSignedIn(true); setRoute("dashboard"); }} />;
+  if (!signedIn) return <Login onIn={(r) => {
+    localStorage.setItem(AUTH_STORAGE_KEY, "true");
+    localStorage.setItem(ROLE_STORAGE_KEY, r);
+    setRole(r);
+    setSignedIn(true);
+    setRoute("dashboard");
+  }} />;
 
   const PAGE = {
     dashboard:     <Dashboard role={role} go={go} toast={toast} />,
@@ -2751,7 +2759,7 @@ export default function App() {
                     <div style={{ padding:"10px 12px", borderBottom:"1px solid var(--line-2)" }}>
                       <div style={{ fontSize:10.5, textTransform:"uppercase", letterSpacing:".08em", color:"var(--slate-2)", fontWeight:700, marginBottom:7, paddingLeft:4 }}>Switch role (demo)</div>
                       {["Admin","Supervisor","Operator","QA","Warehouse"].map(r => (
-                        <button key={r} onClick={() => { setRole(r); setProfileOpen(false); toast(`Now viewing as ${r}`); }}
+                        <button key={r} onClick={() => { localStorage.setItem(ROLE_STORAGE_KEY, r); setRole(r); setProfileOpen(false); toast(`Now viewing as ${r}`); }}
                           style={{ display:"flex", alignItems:"center", gap:9, width:"100%", border:0, background: role===r ? "var(--nova-soft)" : "transparent",
                                    borderRadius:9, padding:"8px 10px", fontSize:12.5, color: role===r ? "var(--nova)" : "var(--ink)", fontWeight: role===r?600:500, textAlign:"left" }}>
                           <User size={14} />{r}{role===r && <Check size={14} style={{ marginLeft:"auto" }} />}
@@ -2759,7 +2767,7 @@ export default function App() {
                       ))}
                     </div>
                     <div style={{ padding:10 }}>
-                      <button className="btn btn-g btn-sm" style={{ width:"100%", justifyContent:"center" }} onClick={() => { setSignedIn(false); setProfileOpen(false); }}>
+                      <button className="btn btn-g btn-sm" style={{ width:"100%", justifyContent:"center" }} onClick={() => { localStorage.removeItem(AUTH_STORAGE_KEY); localStorage.removeItem(ROLE_STORAGE_KEY); setSignedIn(false); setProfileOpen(false); }}>
                         <LogOut size={13} />Sign out
                       </button>
                     </div>
