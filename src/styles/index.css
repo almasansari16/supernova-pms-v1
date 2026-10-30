@@ -1,0 +1,10 @@
+/* Global stylesheet entry. Fonts are loaded from index.html. */
+@import "./base.css";
+@import "./layout.css";
+@import "./components.css";
+@import "./overlays.css";
+@import "./domain.css";
+@import "./auth.css";
+
+html, body, #root { height: 100%; margin: 0; }
+body { background: #F4F6FB; }

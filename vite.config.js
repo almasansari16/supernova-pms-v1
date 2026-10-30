@@ -1,8 +1,12 @@
+import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) },
+  },
   server: { port: 5173, open: true },
   build: {
     outDir: "dist",
@@ -11,7 +15,7 @@ export default defineConfig({
       output: {
         // recharts and d3 are the bulk of the bundle — keep them out of the app chunk
         manualChunks: {
-          react: ["react", "react-dom"],
+          react: ["react", "react-dom", "react-router-dom"],
           charts: ["recharts"],
           icons: ["lucide-react"],
         },

@@ -70,32 +70,33 @@ explicitly locked off in Settings → Label configuration.
 
 ## Project layout
 
+Feature-based architecture with a shared domain ("entities") layer:
+
 ```
-supernova-psms/
-├── index.html
-├── package.json
-├── vite.config.js
-├── public/
-│   └── favicon.svg
-└── src/
-    ├── main.jsx                    mounts the app
-    ├── index.css                   full-height canvas only
-    ├── SerializationApp.jsx        the application
-    └── assets/logos/
-        ├── supernova-wordmark.svg           navy, for light backgrounds
-        ├── supernova-wordmark-reversed.svg  white, for dark backgrounds
-        ├── supernova-glyph.svg              the ringed planet alone
-        ├── supernova-original.png           supplied artwork
-        └── ermanager-original.png           supplied artwork
+src/
+├── main.jsx            entry: mounts <App/> and the global stylesheet
+├── app/                app wiring — providers, router, authenticated layout
+├── features/<name>/    one folder per screen: pages/ components/ hooks/ data/ lib/ + index.js
+├── entities/<name>/    domain models shared by many features (product, serial, register, session…)
+├── shared/             business-agnostic building blocks: ui, hooks, lib, config, api, barcode, brand
+└── styles/             design tokens and component CSS (scoped under .sn)
 ```
 
-`SerializationApp.jsx` is deliberately a single file so it can be dropped into any React
-project without touching build configuration. It is organised top to bottom as: design
-system CSS → mock data → serial logic → barcode renderers → brand marks → UI primitives →
-pages → application shell. Split it along those comment banners if you prefer a
-folder-per-feature structure.
+Dependency rule — a layer only imports from layers below it:
 
-The only dependencies are `react`, `recharts` and `lucide-react`.
+```
+app  ->  features  ->  entities  ->  shared
+```
+
+- Features never import other features; shared behaviour moves to `entities/` and
+  cross-screen hand-off goes through the URL (`/scanner?code=…`, `/label-printing?serial=…`).
+- Import a feature or entity only through its `index.js`.
+- Screens, menu, role access and lazy loading are all declared in `src/app/router/routes.config.js`.
+- `import.meta.env` is read only in `src/shared/config/env.js`. Copy `.env.example` to
+  `.env.local` to override values; `VITE_` variables are public, never put secrets there.
+- `@/` is an alias for `src/`.
+
+Dependencies: `react`, `react-router-dom`, `recharts` and `lucide-react`.
 
 ---
 

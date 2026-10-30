@@ -1,0 +1,24 @@
+/* Design tokens and base element rules — everything is scoped under .sn */
+.sn *, .sn *::before, .sn *::after { box-sizing: border-box; }
+.sn {
+  --ink:#140A38; --ink-2:#251463; --nova:#3A22A8; --nova-2:#5236D6; --nova-soft:#EFEBFC;
+  --teal:#12A5B8; --teal-soft:#E4F7F9; --brand:#1E0D63;
+  --spark:#F5A623; --spark-soft:#FEF4E2; --mint:#0E9F6E; --mint-soft:#E6F7F0;
+  --rose:#E02D3C; --rose-soft:#FDECEE; --violet:#6D3BEF; --violet-soft:#F0EAFE;
+  --slate:#5A6B85; --slate-2:#8494AC; --mist:#F4F6FB; --line:#E4E9F2; --line-2:#EFF2F8;
+  --white:#fff;
+  --r-s:8px; --r-m:12px; --r-l:16px; --r-xl:22px;
+  --sh-1:0 1px 2px rgba(10,23,48,.05), 0 1px 3px rgba(10,23,48,.04);
+  --sh-2:0 2px 6px rgba(10,23,48,.06), 0 10px 24px -12px rgba(10,23,48,.14);
+  --sh-3:0 24px 60px -20px rgba(10,23,48,.28);
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color:var(--ink); background:var(--mist); font-size:14px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.sn h1,.sn h2,.sn h3,.sn h4 { font-family:'Sora',Inter,sans-serif; margin:0; letter-spacing:-.02em; font-weight:600; }
+.sn button { font-family:inherit; cursor:pointer; }
+.sn .mono { font-family:'JetBrains Mono',ui-monospace,monospace; font-variant-numeric:tabular-nums; }
+.sn ::-webkit-scrollbar { width:9px; height:9px; }
+.sn ::-webkit-scrollbar-thumb { background:#C9D3E3; border-radius:8px; }
+.sn ::-webkit-scrollbar-track { background:transparent; }
+.sn :focus-visible { outline:2px solid var(--nova); outline-offset:2px; border-radius:4px; }

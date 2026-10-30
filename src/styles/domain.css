@@ -1,0 +1,61 @@
+/* Domain widgets: run stepper, serial ladder, aggregation tree, label artwork, scan zone */
+/* ---------- stepper ---------- */
+.stepper { display:flex; align-items:flex-start; gap:0; overflow-x:auto; padding:4px 0; }
+.step { display:flex; align-items:flex-start; gap:0; flex:1; min-width:130px; }
+.step .body { text-align:center; flex:1; padding:0 6px; }
+.step .bub {
+  width:34px; height:34px; border-radius:50%; display:grid; place-items:center; margin:0 auto 8px;
+  border:2px solid var(--line); background:#fff; color:var(--slate-2); font-weight:700; font-size:13px;
+  font-family:'JetBrains Mono'; transition:all .24s;
+}
+.step.on .bub { border-color:var(--nova); background:var(--nova); color:#fff; box-shadow:0 0 0 5px rgba(58,34,168,.15); }
+.step.done .bub { border-color:var(--mint); background:var(--mint); color:#fff; }
+.step .st { font-size:12px; font-weight:600; color:var(--slate-2); }
+.step.on .st, .step.done .st { color:var(--ink); }
+.step .sd { font-size:10.5px; color:var(--slate-2); margin-top:2px; }
+.step .bar { height:2px; background:var(--line); flex:1; margin-top:17px; min-width:14px; }
+.step.done .bar { background:var(--mint); }
+
+/* ---------- serial ladder (signature) ---------- */
+.ladder { display:flex; flex-direction:column; gap:5px; }
+.lrow {
+  display:flex; align-items:center; gap:11px; padding:8px 12px; border-radius:10px; background:#FBFCFF;
+  border:1px solid var(--line-2); animation:fade .3s both;
+}
+.lrow .sq { font-size:10.5px; color:var(--slate-2); width:34px; font-family:'JetBrains Mono'; }
+.serial { font-family:'JetBrains Mono'; font-size:15px; font-weight:600; letter-spacing:.02em; }
+.serial .pfx { color:var(--nova); }
+.serial .mid { color:var(--teal); }
+.serial .seq { color:var(--ink); }
+.serial .pad { color:#B9C4D6; }
+
+/* ---------- tree ---------- */
+.tree { font-size:13px; }
+.tnode { border-radius:12px; }
+.tparent {
+  display:flex; align-items:center; gap:11px; padding:12px 14px; border:1px solid var(--line);
+  border-radius:12px; background:linear-gradient(180deg,#FFF,#F9FBFF); cursor:pointer; transition:all .16s;
+}
+.tparent:hover { border-color:#CEC4F1; box-shadow:var(--sh-1); }
+.tkids { margin:8px 0 4px 22px; padding-left:20px; border-left:2px dashed #CFDAEC; display:flex; flex-direction:column; gap:6px; }
+.tkid { display:flex; align-items:center; gap:10px; padding:8px 12px; border:1px solid var(--line-2); border-radius:10px; background:#fff; position:relative; }
+.tkid::before { content:''; position:absolute; left:-20px; top:50%; width:18px; height:2px; background:#CFDAEC; }
+
+/* ---------- labels ---------- */
+.label-sheet {
+  background:#fff; border:1px solid #D7DEEA; border-radius:8px; padding:16px; width:100%;
+  box-shadow:var(--sh-2); position:relative;
+}
+.label-sheet.carton { border-width:2px; border-color:#1E0D63; }
+.lbl-rule { border-top:1px solid #DCE3EE; margin:9px 0; }
+.lbl-k { font-size:8.5px; text-transform:uppercase; letter-spacing:.09em; color:#6B7C97; font-weight:700; }
+.lbl-v { font-size:12px; font-weight:600; font-family:'JetBrains Mono'; color:#1E0D63; }
+.perf { border-top:2px dashed #C6D0E0; margin:12px 0; }
+
+/* ---------- scanner ---------- */
+.scanzone {
+  border:2px dashed #CEC4F1; border-radius:var(--r-l); background:linear-gradient(180deg,#F7FAFF,#EEF3FF);
+  padding:30px 22px; text-align:center; position:relative; overflow:hidden;
+}
+.scanline { position:absolute; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--nova),transparent); animation:scan 2.1s linear infinite; }
+@keyframes scan { 0%{top:0} 100%{top:100%} }

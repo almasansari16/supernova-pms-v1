@@ -1,0 +1,15 @@
+/* Authentication screen */
+/* ---------- login ---------- */
+.login { min-height:100%; display:grid; grid-template-columns:1.05fr .95fr; background:var(--ink); }
+.login-art { position:relative; overflow:hidden; padding:44px; display:flex; flex-direction:column; justify-content:space-between; color:#D6E1F2; }
+.login-art::before { content:''; position:absolute; inset:0; background:
+  radial-gradient(900px 480px at 12% 10%, rgba(82,54,214,.46), transparent 60%),
+  radial-gradient(620px 420px at 88% 88%, rgba(18,165,184,.20), transparent 62%); }
+.gridlines { position:absolute; inset:0; opacity:.30;
+  background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:46px 46px; mask-image:radial-gradient(circle at 30% 40%,#000,transparent 78%); }
+.login-form { background:var(--mist); display:grid; place-items:center; padding:34px 30px; }
+.login-card { width:100%; max-width:392px; background:rgba(255,255,255,.86); backdrop-filter:blur(18px) saturate(180%);
+  border:1px solid rgba(255,255,255,.9); border-radius:var(--r-xl); padding:30px; box-shadow:var(--sh-3); }
+.glass { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(10px); border-radius:14px; padding:14px 16px; }
+@media (max-width:900px){ .login { grid-template-columns:1fr; } .login-art { display:none; } }

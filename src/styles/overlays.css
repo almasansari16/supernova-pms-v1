@@ -1,0 +1,20 @@
+/* Popovers (notifications, profile) and toast stack */
+/* ---------- notifications ---------- */
+.pop {
+  position:absolute; top:52px; right:0; width:352px; background:#fff; border:1px solid var(--line);
+  border-radius:var(--r-l); box-shadow:var(--sh-3); z-index:60; overflow:hidden;
+}
+.notif { display:flex; gap:11px; padding:12px 14px; border-bottom:1px solid var(--line-2); }
+.notif:hover { background:#FAFBFE; }
+.notif .ni { width:30px; height:30px; border-radius:9px; display:grid; place-items:center; flex:0 0 30px; }
+.notif .nt { font-size:12.8px; font-weight:600; }
+.notif .nd { font-size:11.5px; color:var(--slate); margin-top:2px; }
+.notif .nw { font-size:10.5px; color:var(--slate-2); margin-top:4px; }
+
+.toasts { position:fixed; bottom:20px; right:20px; z-index:200; display:flex; flex-direction:column; gap:9px; }
+.toast {
+  display:flex; align-items:center; gap:10px; background:var(--ink); color:#fff; padding:11px 15px;
+  border-radius:12px; box-shadow:var(--sh-3); font-size:13px; font-weight:500; animation:tin .3s both;
+  max-width:340px;
+}
+@keyframes tin { from{opacity:0; transform:translateX(24px)} to{opacity:1; transform:none} }
