@@ -1,11 +1,13 @@
 /* Popovers (notifications, profile) and toast stack */
 /* ---------- notifications ---------- */
 .pop {
-  position:absolute; top:52px; right:0; width:352px; background:#fff; border:1px solid var(--line);
+  position:absolute; top:52px; right:0; width:352px;
+  background:var(--pop-bg, #fff); color:var(--pop-fg, inherit);
+  border:1px solid var(--line);
   border-radius:var(--r-l); box-shadow:var(--sh-3); z-index:60; overflow:hidden;
 }
 .notif { display:flex; gap:11px; padding:12px 14px; border-bottom:1px solid var(--line-2); }
-.notif:hover { background:#FAFBFE; }
+.notif:hover { background:var(--pop-hover, #FAFBFE); }
 .notif .ni { width:30px; height:30px; border-radius:9px; display:grid; place-items:center; flex:0 0 30px; }
 .notif .nt { font-size:12.8px; font-weight:600; }
 .notif .nd { font-size:11.5px; color:var(--slate); margin-top:2px; }
@@ -13,8 +15,24 @@
 
 .toasts { position:fixed; bottom:20px; right:20px; z-index:200; display:flex; flex-direction:column; gap:9px; }
 .toast {
-  display:flex; align-items:center; gap:10px; background:var(--ink); color:#fff; padding:11px 15px;
-  border-radius:12px; box-shadow:var(--sh-3); font-size:13px; font-weight:500; animation:tin .3s both;
-  max-width:340px;
+  display:flex; align-items:center; gap:10px;
+  background:var(--toast-bg, var(--ink)); color:var(--toast-fg, #fff);
+  border:1px solid var(--toast-border, transparent);
+  padding:11px 15px; border-radius:12px; box-shadow:var(--sh-3);
+  font-size:13px; font-weight:500; animation:tin .3s both; max-width:340px;
 }
 @keyframes tin { from{opacity:0; transform:translateX(24px)} to{opacity:1; transform:none} }
+
+/* ---------- dark mode overrides only ---------- */
+.dark, .theme-dark,
+[data-theme="dark"], [data-mode="dark"],
+.sn.dark, .sn.theme-dark, .sn[data-theme="dark"],
+html.dark, body.dark {
+  --pop-bg: #161B2E;
+  --pop-fg: #E6E9F2;
+  --pop-hover: rgba(255,255,255,.04);
+  --toast-bg: #1E2438;
+  --toast-fg: #F1F3F9;
+  --toast-border: rgba(255,255,255,.08);
+}
+

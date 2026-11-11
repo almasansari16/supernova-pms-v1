@@ -1,16 +1,24 @@
-/* Design tokens and base element rules — everything is scoped under .sn */
 .sn *, .sn *::before, .sn *::after { box-sizing: border-box; }
 .sn {
-  --ink:#140A38; --ink-2:#251463; --nova:#3A22A8; --nova-2:#5236D6; --nova-soft:#EFEBFC;
-  --teal:#12A5B8; --teal-soft:#E4F7F9; --brand:#1E0D63;
-  --spark:#F5A623; --spark-soft:#FEF4E2; --mint:#0E9F6E; --mint-soft:#E6F7F0;
-  --rose:#E02D3C; --rose-soft:#FDECEE; --violet:#6D3BEF; --violet-soft:#F0EAFE;
-  --slate:#5A6B85; --slate-2:#8494AC; --mist:#F4F6FB; --line:#E4E9F2; --line-2:#EFF2F8;
-  --white:#fff;
+  --ink:oklch(0.1955165 0.0838036 285.65558); --ink-2:oklch(0.2758272 0.1290332 283.90333); --nova:oklch(0.3868657 0.1968603 280.10770); --nova-2:oklch(0.4770837 0.2277900 281.40204); --nova-soft:oklch(0.9481446 0.0230682 296.72914);
+  --teal:oklch(0.6621920 0.1117622 209.50653); --teal-soft:oklch(0.9627569 0.0201522 204.42660); --brand:oklch(0.2602391 0.1371337 280.07438);
+  --spark:oklch(0.7836523 0.1587203 72.99126); --spark-soft:oklch(0.9701741 0.0260202 82.38689); --mint:oklch(0.6222238 0.1332950 162.27194); --mint-soft:oklch(0.9616278 0.0201265 169.34321);
+  --rose:oklch(0.5912446 0.2123010 22.97225); --rose-soft:oklch(0.9571147 0.0186223 9.30171); --violet:oklch(0.5296756 0.2480011 287.26958); --violet-soft:oklch(0.9476023 0.0274099 299.55085);
+  --slate:oklch(0.5238521 0.0461011 258.76619); --slate-2:oklch(0.6621542 0.0402573 258.36965); --mist:oklch(0.9730479 0.0069955 268.54810); --line:oklch(0.9328361 0.0133031 262.37818); --line-2:oklch(0.9605878 0.0086508 264.52177);
+  --white:oklch(1.0000000 0.0000000 0.00000); --bg:oklch(0.9795001 0.0054150 274.96682); --surface:oklch(1.0000000 0.0000000 0.00000); --surface-2:oklch(0.9682603 0.0068536 247.89557); --surface-3:oklch(0.9423562 0.0115998 264.50950);
+  --nova-ink:oklch(0.3519528 0.1700325 280.95278); --mint-ink:oklch(0.4951186 0.1060949 162.12434); --spark-ink:oklch(0.5395373 0.1123027 72.09382); --rose-ink:oklch(0.4890594 0.1817001 23.70932); --violet-ink:oklch(0.4177009 0.2133024 285.17571);
+  --teal-ink:oklch(0.5381365 0.0917264 210.71167); --red:oklch(0.5770988 0.2151567 27.32505); --red-2:oklch(0.8076897 0.1034857 19.57064); --red-soft:oklch(0.9705278 0.0129469 17.37970);
+  --hover:oklch(0.9881732 0.0041146 271.37042); --readonly:oklch(0.9844351 0.0045239 258.32440); --accent-line:oklch(0.8430990 0.0629333 295.20318); --focus:oklch(0.3868657 0.1968603 280.10770 / 0.12);
+  --tree-line:oklch(0.8854911 0.0275071 260.31518); --serial-pad:oklch(0.8174410 0.0280766 260.31119); --scroll-thumb:oklch(0.8640826 0.0246985 259.82266); --scroll-hover:oklch(0.7781279 0.0355749 257.86064);
+  --sap-top:oklch(0.9911546 0.0041115 271.37057); --sap-bottom:oklch(0.9820195 0.0069793 268.54869); --skeleton:oklch(0.9568305 0.0091215 258.33578); --skeleton-shine:oklch(0.9787449 0.0057353 264.53266);
+  --scan-top:oklch(0.9842546 0.0073816 260.73152); --scan-bottom:oklch(0.9638608 0.0169471 267.79176); --button-solid:oklch(0.1955165 0.0838036 285.65558); --button-solid-hover:oklch(0.2758272 0.1290332 283.90333);
+  --on-action:oklch(1.0000000 0.0000000 0.00000); --primary-start:oklch(0.4770837 0.2277900 281.40204); --primary-end:oklch(0.3868657 0.1968603 280.10770);
+  --label-paper:oklch(1.0000000 0.0000000 0.00000); --label-ink:oklch(0.2602391 0.1371337 280.07438); --label-muted:oklch(0.5825604 0.0462788 259.58403); --label-line:oklch(0.8988126 0.0180778 261.33572);
+  --action-shadow:0 1px 2px oklch(0.3868657 0.1968603 280.10770 / 0.35),0 6px 16px -8px oklch(0.3868657 0.1968603 280.10770 / 0.6);
   --r-s:8px; --r-m:12px; --r-l:16px; --r-xl:22px;
-  --sh-1:0 1px 2px rgba(10,23,48,.05), 0 1px 3px rgba(10,23,48,.04);
-  --sh-2:0 2px 6px rgba(10,23,48,.06), 0 10px 24px -12px rgba(10,23,48,.14);
-  --sh-3:0 24px 60px -20px rgba(10,23,48,.28);
+  --sh-1:0 1px 2px oklch(0.2087817 0.0529795 262.12888 / 0.05), 0 1px 3px oklch(0.2087817 0.0529795 262.12888 / 0.04);
+  --sh-2:0 2px 6px oklch(0.2087817 0.0529795 262.12888 / 0.06), 0 10px 24px -12px oklch(0.2087817 0.0529795 262.12888 / 0.14);
+  --sh-3:0 24px 60px -20px oklch(0.2087817 0.0529795 262.12888 / 0.28);
   font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
   color:var(--ink); background:var(--mist); font-size:14px; line-height:1.5;
   -webkit-font-smoothing:antialiased;
@@ -19,6 +27,33 @@
 .sn button { font-family:inherit; cursor:pointer; }
 .sn .mono { font-family:'JetBrains Mono',ui-monospace,monospace; font-variant-numeric:tabular-nums; }
 .sn ::-webkit-scrollbar { width:9px; height:9px; }
-.sn ::-webkit-scrollbar-thumb { background:#C9D3E3; border-radius:8px; }
+.sn ::-webkit-scrollbar-thumb { background:var(--scroll-thumb); border-radius:8px; }
 .sn ::-webkit-scrollbar-track { background:transparent; }
 .sn :focus-visible { outline:2px solid var(--nova); outline-offset:2px; border-radius:4px; }
+
+html[data-theme="dark"], html[data-theme="dark"] .sn {
+  color-scheme:dark;
+  --bg:oklch(0.1783283 0.0128091 270.60219); --surface:oklch(0.2322975 0.0198808 271.76045); --surface-2:oklch(0.2744027 0.0375748 274.97448); --surface-3:oklch(0.3106743 0.0402412 273.99359);
+  --white:var(--surface); --mist:oklch(0.2562493 0.0326716 273.70321); --ink:oklch(0.9682603 0.0068536 247.89557); --ink-2:oklch(0.9140461 0.0180005 261.33631);
+  --navy:var(--ink); --navy-2:var(--ink-2); --text:var(--ink); --text-2:var(--slate);
+  --slate:oklch(0.8116047 0.0263708 261.13558); --slate-2:oklch(0.6995694 0.0355363 260.99520); --line:oklch(0.3131928 0.0387237 271.74165); --line-2:oklch(0.2916819 0.0340955 269.97647);
+  --nova:oklch(0.7161726 0.1543575 285.17157); --nova-2:oklch(0.7841902 0.1156183 287.32366); --nova-soft:oklch(0.2970983 0.0589158 286.38663); --nova-ink:oklch(0.8182718 0.0964479 288.05056);
+  --mint:oklch(0.7820541 0.1514305 165.72666); --mint-soft:oklch(0.3188893 0.0447831 174.56916); --mint-ink:oklch(0.8510579 0.1240352 166.35081);
+  --spark:oklch(0.8368606 0.1644216 84.42863); --spark-soft:oklch(0.3143101 0.0367925 84.92459); --spark-ink:oklch(0.8756859 0.1114403 87.70968);
+  --rose:oklch(0.7191861 0.1689836 13.42799); --rose-soft:oklch(0.3029701 0.0441275 354.04820); --rose-ink:oklch(0.8297187 0.0971660 9.78460);
+  --red:oklch(0.7106273 0.1661479 22.21622); --red-2:oklch(0.4395721 0.0745938 7.28586); --red-soft:oklch(0.2961306 0.0370007 357.10988);
+  --teal:oklch(0.8032207 0.1227820 205.65140); --teal-soft:oklch(0.3268641 0.0431009 217.09770); --teal-ink:oklch(0.8648183 0.0842288 205.18311);
+  --violet:oklch(0.7501800 0.1423985 293.71559); --violet-soft:oklch(0.3111275 0.0587338 295.32693); --violet-ink:oklch(0.8330675 0.0961551 298.45957);
+  --hover:oklch(0.2665806 0.0290502 270.09145); --readonly:oklch(0.2628389 0.0269491 272.08106); --accent-line:oklch(0.5043433 0.0939975 287.88508);
+  --focus:oklch(0.7161726 0.1543575 285.17157 / 0.2); --tree-line:oklch(0.4131203 0.0485019 270.43275); --serial-pad:oklch(0.5479448 0.0417318 264.87939);
+  --scroll-thumb:oklch(0.3789641 0.0442361 270.49881); --scroll-hover:oklch(0.4556243 0.0496003 268.31874);
+  --sap-top:oklch(0.2804748 0.0340685 272.09367); --sap-bottom:oklch(0.2583358 0.0292848 270.02801); --skeleton:oklch(0.2962330 0.0357291 270.60449); --skeleton-shine:oklch(0.3565634 0.0428879 271.56006);
+  --scan-top:oklch(0.2942585 0.0449988 271.01826); --scan-bottom:oklch(0.2671002 0.0370706 268.32822); --button-solid:oklch(0.3297236 0.0559231 290.14759); --button-solid-hover:oklch(0.3851812 0.0737539 290.86820);
+  --primary-start:oklch(0.5683930 0.2019670 283.45599); --primary-end:oklch(0.4890269 0.2029641 281.76005);
+  --sh-1:0 1px 2px oklch(0.0000000 0.0000000 0.00000 / 0.25),0 1px 0 oklch(1.0000000 0.0000000 0.00000 / 0.025) inset;
+  --sh-2:0 1px 0 oklch(1.0000000 0.0000000 0.00000 / 0.035) inset,0 8px 24px -12px oklch(0.0000000 0.0000000 0.00000 / 0.6);
+  --sh-3:0 1px 0 oklch(1.0000000 0.0000000 0.00000 / 0.04) inset,0 16px 44px -12px oklch(0.0000000 0.0000000 0.00000 / 0.65);
+}
+.sn ::-webkit-scrollbar-thumb:hover { background:var(--scroll-hover); }
+html[data-theme="dark"] .sn { scrollbar-color:var(--scroll-thumb) transparent; }
+html[data-theme="dark"] .sn ::selection { background:var(--nova-soft); color:var(--ink); }
